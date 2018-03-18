@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../../css/gtvg.css" th:href="@{/css/gtvg.css}" />
+</head>
+
+<body>
+    <h1>Company Form</h1>
+        <form action="#" th:action="@{/companyform}" th:object="${company}" method="post">
+            <p>New Company Name: <input type="text" th:field="*{companyName}" /></p>
+            <p>email: <input type="text" th:field="*{companyEmail}" /></p>
+            <p><input type="submit" value="SUBMIT"/><input type="reset" value="RESET"/></p>
+        </form>
+</body>
+
+</html>
