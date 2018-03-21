@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Supermarket form</title>
+</head>
+<body>
+	<h1>Form submission</h1>
+		<form action="#" th:action="@{/supermarketform}" th:object="${supermarket}" method="post">
+			<p>New Supermarket name <input type="text" th:field="*{supermarketName}"></p>
+			<p><input type="submit" value="SUBMIT" /><input type="reset" value="RESET"/></p>
+		</form>
+
+</body>
+</html>

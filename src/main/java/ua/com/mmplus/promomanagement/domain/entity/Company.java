@@ -15,6 +15,8 @@ public class Company implements Serializable {
 
     @Column(name = "email")
     private String companyEmail;
+    
+    private Set<Event> event
 
     public Company() {
     }

@@ -1,7 +1,6 @@
 DROP TABLE IF EXISTS company;
 DROP TABLE IF EXISTS promo;
 drop table if exists supermarket;
-drop table if exists event
 
 CREATE TABLE company (
   id BIGINT NOT NULL,
@@ -17,9 +16,4 @@ CREATE TABLE promo (
 create table supermarket (
 	id bigint not null,
 	supermarket_name varchar(255)
-)
-
-create table event(
-	promo_id bigint not null,
-event_name varchar(255)
 )

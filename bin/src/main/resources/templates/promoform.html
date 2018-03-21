@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th:="http://thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Promo submission</title>
+</head>
+<body>
+	<h1>Promo form</h1>
+	
+	<form action="#" th:action="@{/promoform}" th:object="${promo}" method="post">
+	<p>New promo type: <input type="text" th:field="*{promoName}" /></p>
+	<p><input type="submit" value="SUBMIT"/><input type="reset" value="RESET"></p>
+	</form>
+
+</body>
+</html>
