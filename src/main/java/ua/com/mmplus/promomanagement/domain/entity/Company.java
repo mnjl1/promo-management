@@ -2,6 +2,8 @@ package ua.com.mmplus.promomanagement.domain.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "company")
@@ -16,7 +18,8 @@ public class Company implements Serializable {
     @Column(name = "email")
     private String companyEmail;
     
-    private Set<Event> event
+    @OneToMany(fetch = FetchType.LAZY, mappedBy="company")
+    private Set<Event> eventList = new HashSet<>();
 
     public Company() {
     }
@@ -55,6 +58,14 @@ public class Company implements Serializable {
     public void setCompanyEmail(String companyEmail) {
         this.companyEmail = companyEmail;
     }
+    
+	public Set<Event> getEventList() {
+		return eventList;
+	}
+
+	public void setEventList(Set<Event> eventList) {
+		this.eventList = eventList;
+	}
 
 	@Override
 	public int hashCode() {
@@ -65,6 +76,7 @@ public class Company implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
+	
 
 	@Override
 	public boolean equals(Object obj) {
