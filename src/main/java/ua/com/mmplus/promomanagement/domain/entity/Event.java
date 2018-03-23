@@ -37,6 +37,10 @@ public class Event implements Serializable {
     @JoinColumn(name="id")
     private Supermarket supermarket;
     
+    public Event() {
+    	
+    }
+    
     private String Description;
 	public Event(Long id, Date date, Company company, Promo promoType, String description) {
 		super();
