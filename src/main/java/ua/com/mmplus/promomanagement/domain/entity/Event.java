@@ -15,40 +15,46 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Event")
+@Table(name="event")
 public class Event implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	
-	@Column(name="promo_id")
+	@Column(name = "event_id")
     private Long id;
+
+	@Column(name = "date")
     private LocalDate date;
-    
+
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name = "id", nullable = false)
+    @JoinColumn(name = "company_id")
     private Company company;
     
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="id", nullable=false)
-    private Promo promoType;
+    @JoinColumn(name="promo_id")
+    private Promo promo;
     
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="id")
+    @JoinColumn(name="supermarket_id")
     private Supermarket supermarket;
-    
-    public Event() {
-    	
-    }
-    
-    private String Description;
-	public Event(Long id, Date date, Company company, Promo promoType, String description) {
+
+    @Column(name = "description")
+    private String description;
+
+    private boolean status;
+
+	public Event() {
+
+	}
+
+	public Event(Long id, Date date, Company company, Promo promo, String description, Boolean status) {
 		super();
 		this.id = id;
 		this.date = LocalDate.now();
 		this.company = company;
-		this.promoType = promoType;
-		Description = description;
+		this.promo = promo;
+		this.description = description;
+		this.status = status;
 	}
 	public Long getId() {
 		return id;
@@ -68,11 +74,11 @@ public class Event implements Serializable {
 	public void setCompany(Company company) {
 		this.company = company;
 	}
-	public Promo getPromoType() {
-		return promoType;
+	public Promo getPromo() {
+		return promo;
 	}
-	public void setPromoType(Promo promoType) {
-		this.promoType = promoType;
+	public void setPromo(Promo promo) {
+		this.promo = promo;
 	}
 	public Supermarket getSupermarket() {
 		return supermarket;
@@ -81,13 +87,17 @@ public class Event implements Serializable {
 		this.supermarket = supermarket;
 	}
 	public String getDescription() {
-		return Description;
+		return description;
 	}
 	public void setDescription(String description) {
-		Description = description;
+		this.description = description;
 	}
-	
-	
-	
 
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 }

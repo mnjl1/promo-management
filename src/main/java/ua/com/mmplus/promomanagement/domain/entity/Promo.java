@@ -10,6 +10,7 @@ import java.util.Set;
 public class Promo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "promo_id")
     private Long id;
 
     @Column(name = "promo_name")
@@ -85,7 +86,8 @@ public class Promo implements Serializable {
 			return false;
 		return true;
 	}
-	
+
+
 	
     
 }

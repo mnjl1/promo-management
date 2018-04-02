@@ -10,13 +10,14 @@ import java.util.Set;
 public class Supermarket implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "supermarket_id")
     private Long id;
 
     @Column(name = "supermarket_name")
     private String supermarketName;
     
     @OneToMany(fetch=FetchType.LAZY, mappedBy="supermarket")
-    private Set<Event> eventList = new HashSet();
+    private Set<Event> eventList = new HashSet<>();
 
     public Supermarket() {
     }

@@ -6,3 +6,6 @@ insert into promo values(2, 'консультант');
 
 insert into supermarket values (1, 'космополіт');
 insert into supermarket values (2, 'сурікова');
+
+insert into event (event_id, description, company_id, promo_id, supermarket_id)
+ values (1, 'шоколад Нестлде', 1, 1, 1 )

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1>Додавання нової промо акції чи промоутера</h1>
+
+    <form action="#" th:action="@{/eventform.html}" th:object="${event}" method="post">
+        <table>
+            <select class="form-control" th:field="*{company}">
+                <option th:each="companyList : *{}"></option>
+
+            </select>
+        </table>
+    </form>
+
+
+
+</body>
+</html>

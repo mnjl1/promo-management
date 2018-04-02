@@ -10,6 +10,7 @@ import java.util.Set;
 public class Company implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "company_id")
     private Long id;
 
     @Column(name = "company_name")
