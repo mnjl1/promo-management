@@ -42,8 +42,13 @@ public class EventController {
 		model.addAttribute("event", new Event());
 
 		List<Company> companyList = companyService.getAll();
+		model.addAttribute("companyList", companyList);
+
 		List<Promo> promoList = promoService.getAll();
+		model.addAttribute("promoList", promoList);
+
 		List<Supermarket> supermarketList = supermarketService.getAll();
+		model.addAttribute("supermarketList", supermarketList);
 
 		return "eventform";	
 	}
@@ -52,7 +57,7 @@ public class EventController {
 	public String eventSubmit(@ModelAttribute Event event, Model model) {
 		model.addAttribute("event", new Event());
 
-
+		model.addAttribute("event", event);
 
 		eventService.save(event);
 

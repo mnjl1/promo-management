@@ -10,7 +10,8 @@
     <form action="#" th:action="@{/eventform.html}" th:object="${event}" method="post">
         <table>
             <select class="form-control" th:field="*{company}">
-                <option th:each="companyList : *{}"></option>
+                <option th:each="companyList : ${companyList}"
+                        th:value="${companyList.get()}"></option>
 
             </select>
         </table>
