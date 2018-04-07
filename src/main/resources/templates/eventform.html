@@ -1,20 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <title>Додавання нової промо події</title>
     <meta charset="UTF-8">
-    <title></title>
+
 </head>
 <body>
-    <h1>Додавання нової промо акції чи промоутера</h1>
+    <h1>Додавання нової промо події</h1>
 
-    <form action="#" th:action="@{/eventform.html}" th:object="${event}" method="post">
+    <form action="#" th:action="@{/eventform}" th:object="${event}" method="post">
         <table>
-            <select class="form-control" th:field="*{company}">
-                <option th:each="companyList : ${companyList}"
-                        th:value="${companyList.get()}"></option>
+
+            <select class="form-control" th:field="*{promo}">
+
+                <option th:each="promo: ${promoList}"
+                        th:value="${promo.getId()}"
+                        th:utext="${promo.getPromoName().toString()}"
+                ></option>
 
             </select>
+
+            <select class="form-control" th:field="*{company}">
+                <option th:each="companyList : ${companies}"
+                        th:value="${{companyList.getId()}}"
+                        th:utext="${companyList.getCompanyName().toString()}"></option>
+            </select>
+
+            <select class="form-control" th:field="*{supermarket}">
+                <p>Вибір постачальника</p>
+                <option th:each="supermarket : ${supermarketList}"
+                        th:value="${supermarket.getId()}"
+                        th:utext="${supermarket.getSupermarketName().toString()}">
+                </option>
+
+            </select>
+
+            <p>Опис події: <input type="text" th:field="*{description}"/> </p>
+
         </table>
+        <p><input type="submit" value="Додати подію"></p>
     </form>
 
 
