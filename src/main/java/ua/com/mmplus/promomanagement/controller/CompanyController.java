@@ -1,5 +1,7 @@
 package ua.com.mmplus.promomanagement.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,5 +45,10 @@ public class CompanyController {
         Company company = companyService.findById(id);
         model.addAttribute("company", company);
         return "company_info";
+    }
+    
+    @GetMapping("/company_list")
+    public List<Company> getCompanyList() {
+    	return companyService.getAll();
     }
 }
