@@ -40,15 +40,16 @@ public class CompanyController {
         return "companyresult";
     }
 
-    @GetMapping("/company_info")
+    @GetMapping("/company-info")
     public String getCompany(@RequestParam("id") Long id, Model model){
         Company company = companyService.findById(id);
         model.addAttribute("company", company);
-        return "company_info";
+        return "company-info";
     }
     
-    @GetMapping("/company_list")
-    public List<Company> getCompanyList() {
-    	return companyService.getAll();
+    @GetMapping("/companylist")
+    public String getCompanyList(Model model) {
+    	model.addAttribute("companyList", companyService.getAll());
+    	return "companylist1";
     }
 }

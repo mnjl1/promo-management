@@ -34,10 +34,12 @@ public class CompanyServiceImpl implements CompanyService {
         return companyRepository.getOne(id);
     }
 
-    @Override
-    public void update(Company company) {
-        //code here
-    }
+	@Override
+	public Company update(Company company) {
+		return companyRepository.save(company);
+	}
+
+    
 }
 
 

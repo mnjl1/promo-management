@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Список Постачальниківю</title>
+	<th:block th:include="layout/header"></th:block>
+</head>
+<body>
+	<div class="container">
+		<div >
+			<h2>Постачальники</h2>
+			<table class="table table-striped">
+				<tr>
+					<th>id</th>
+					<th>Назва компанії</th>
+					<th>email</th>
+				</tr>
+				<tr th:each="company : ${companyList}">
+					<td th:text="${company.getId}"></td>
+					<td th:text="${company.getCompanyName()}">
+				</tr>
+			</table>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -13,6 +13,6 @@ public interface CompanyService {
 
     Company findById(Long id);
 
-    void update(Company company);
+    Company update(Company company);
 
 }
