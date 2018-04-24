@@ -3,11 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Список Постачальниківю</title>
-	<th:block th:include="layout/header"></th:block>
 </head>
 <body>
 	<div class="container">
-		<div >
+		<div th:if="${not #lists.isEmpty(companies)}">
 			<h2>Постачальники</h2>
 			<table class="table table-striped">
 				<tr>
@@ -15,13 +14,18 @@
 					<th>Назва компанії</th>
 					<th>email</th>
 				</tr>
-				<tr th:each="company : ${companyList}">
-					<td th:text="${company.getId}"></td>
-					<td th:text="${company.getCompanyName()}">
+				<tr th:each="company : ${companies}">
+					<td th:utext="${company.getId()}">id</td>
+					<td th:utext="${company.getCompanyName()}">Name</td>
+					<td th:utext="${company.getCompanyEmail()}">email</td>
+					<td>
+						<a href=""></a>
+					</td>
 				</tr>
 			</table>
 		</div>
 	</div>
+	<a href="/">У головне меню</a>
 
 </body>
 </html>

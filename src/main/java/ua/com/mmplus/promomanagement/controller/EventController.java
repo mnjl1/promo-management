@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import ua.com.mmplus.promomanagement.domain.entity.Company;
@@ -62,5 +63,17 @@ public class EventController {
 		eventService.save(event);
 
 		return "eventresult";
+	}
+	
+	@GetMapping("/eventlist")
+	public String eventList(Model model) {
+		model.addAttribute("events", eventService.getAll());
+		return "eventlist";
+	}
+	
+	@GetMapping("/update/{id}")
+	public String updateEvent(Model model, @PathVariable(value="id") Long id) {
+		model.addAttribute("event", eventService.findById(id));
+		return "eventform";
 	}
 }

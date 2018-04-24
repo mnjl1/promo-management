@@ -1,7 +1,5 @@
 package ua.com.mmplus.promomanagement.controller;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,8 +37,8 @@ public class CompanyController {
 
         return "companyresult";
     }
-
-    @GetMapping("/company-info")
+    
+    @GetMapping("/company-info/{id}")
     public String getCompany(@RequestParam("id") Long id, Model model){
         Company company = companyService.findById(id);
         model.addAttribute("company", company);
@@ -49,7 +47,7 @@ public class CompanyController {
     
     @GetMapping("/companylist")
     public String getCompanyList(Model model) {
-    	model.addAttribute("companyList", companyService.getAll());
-    	return "companylist1";
+    	model.addAttribute("companies", companyService.getAll());
+    	return "companylist";
     }
 }

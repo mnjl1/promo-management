@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Events</title>
+</head>
+<body>
+	<div class="container">
+		<div th:if="${not #lists.isEmpty(events)}">
+			<h2>Список подій</h2>
+			<table class="table table sub-striped">
+				<tr>
+					<th>id</th>
+					<th>Дата події</th>
+					<th>Постачальник</th>
+					<th>Промо</th>
+					<th>Супермаркет</th>
+					<th>Опис події</th>
+				</tr>
+				<tr th:each="event : ${events}">
+					<td th:utext="${event.getId()}">id</td>
+					<td th:utext="${event.getDate()}"></td>
+					<td>
+						<span th:each="company, iterStat : ${event.company}">
+						<span th:utext="${company.getCompanyName()}"></span>
+						</span>
+					</td>
+					<td>
+						<span th:each="promo, iterStat : ${event.promo}">
+						<span th:text="${promo.getPromoName()}"></span>
+						</span>
+					</td>
+					<td>
+						<span th:each="supermarket, iterStat : ${event.supermarket}">
+						<span th:utext="${supermarket.getSupermarketName()}"></span>
+						</span>
+					</td>
+					<td th:utext="${event.getDescription()}"></td>
+					
+					<td>
+						<a th:href="@{/update/{id} (id=${event.getId()})}" class="btn btn-success btn-xs"
+							>Редагувати подію</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	
+
+</body>
+</html>
