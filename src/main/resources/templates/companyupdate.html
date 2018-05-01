@@ -11,7 +11,7 @@
 
 <body>
     <h1>Company Form</h1>
-        <form action="#" th:action="@{/companyform}" th:object="${company}" method="post">
+        <form th:action="@{/companylist}" th:object="${company}" method="post">
             <p>New Company Name: <input type="text" th:field="*{companyName}" /></p>
             <p>email: <input type="text" th:field="*{companyEmail}" /></p>
             <p><input type="submit" value="SUBMIT"/><input type="reset" value="RESET"/></p>

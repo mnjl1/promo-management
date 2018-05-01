@@ -46,7 +46,7 @@ public class EventController {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	@GetMapping("/event/add")
+	@GetMapping("/eventform")
 	public String eventForm(Model model) {
 		model.addAttribute("event", new Event());
 
@@ -62,7 +62,7 @@ public class EventController {
 		return "eventform";	
 	}
 	
-	@PostMapping("eventlist")
+	@PostMapping("/eventform")
 	public String eventSubmit(Event event) {
 //		model.addAttribute("event", new Event());
 //
@@ -72,7 +72,7 @@ public class EventController {
 
 		eventService.save(event);
 		
-		return "redirect:/";
+		return "eventresult";
 	}
 	
 	@GetMapping("/eventlist")

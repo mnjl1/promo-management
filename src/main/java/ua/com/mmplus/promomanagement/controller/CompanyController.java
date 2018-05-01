@@ -17,13 +17,13 @@ public class CompanyController {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @RequestMapping(value = "/company/add", method = RequestMethod.GET)
+    @RequestMapping(value = "/companyform", method = RequestMethod.GET)
     public String companyForm(Model model){
         model.addAttribute("company", new Company());
         return "companyform";
     }
 
-    @RequestMapping(path = "companylist", method = RequestMethod.POST)
+    @PostMapping("/companyform")
     public String companySubmit(Company company){
 
         String info = String.format("Company submission: id = %d, company = %s" +
@@ -33,9 +33,8 @@ public class CompanyController {
         
         companyService.save(company);
 
-        return "companylist";
+        return "companyresult";
     }
-    
     
     @GetMapping("/companylist")
     public String getCompanyList(Model model) {
@@ -43,9 +42,9 @@ public class CompanyController {
     	return "companylist";
     }
     
-    @GetMapping("/company/edit/{id}")
-    public String updateCompany(@PathVariable(name = "id") Long id, Model model) {
-    	model.addAttribute("company", companyService.findById(id));
+    @RequestMapping("/company/edit/{id}")
+    public String updateCompany(@PathVariable(name = "id") Long id) {
+    	
     	return "companyform";
     }
 }
