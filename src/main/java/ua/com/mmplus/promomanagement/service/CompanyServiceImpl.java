@@ -14,9 +14,10 @@ public class CompanyServiceImpl implements CompanyService {
     private CompanyRepository companyRepository;
 
     @Override
-    public void save(Company company) {
-        companyRepository.save(company);
-    }
+	public void save(Company company) {
+		companyRepository.save(company);
+		
+	}
 
     @Override
     public void delete(Long id) {
@@ -38,6 +39,8 @@ public class CompanyServiceImpl implements CompanyService {
 	public Company update(Company company) {
 		return companyRepository.save(company);
 	}
+
+	
 
     
 }

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Постачальник</title>
+</head>
+<body>
+	<div class="container">
+ 
+    <h2><div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+ 
+    <h2>Product Details</h2>
+        <div>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"> Id:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" th:text="${company.getId()}">Product Id</p></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Постачальник:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" th:text="${company.getCompanyName}">company</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">email:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" th:text="${company.getCompanyEmail()}">email</p>
+                    </div>
+                </div>
+          
+            </form>
+    </div>
+</div></h2>
+        <div>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"> Id:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" th:text="${company.getId()}"> Id</p></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Company:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" th:text="${company.getCompanyName}">company</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Price:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" th:text="${company.getCompanyEmail}">email</p>
+                    </div>
+                </div>
+            </form>
+    </div>
+</div>
+</body>
+</html>

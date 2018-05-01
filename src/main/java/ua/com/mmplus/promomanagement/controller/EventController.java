@@ -14,6 +14,7 @@ import ua.com.mmplus.promomanagement.domain.entity.Company;
 import ua.com.mmplus.promomanagement.domain.entity.Event;
 import ua.com.mmplus.promomanagement.domain.entity.Promo;
 import ua.com.mmplus.promomanagement.domain.entity.Supermarket;
+import ua.com.mmplus.promomanagement.repository.EventRepository;
 import ua.com.mmplus.promomanagement.service.CompanyService;
 import ua.com.mmplus.promomanagement.service.EventService;
 import ua.com.mmplus.promomanagement.service.PromoService;
@@ -25,7 +26,14 @@ import java.util.List;
 public class EventController {
 	
 	@Autowired
+	EventRepository eventRepository;
+	
 	private EventService eventService;
+	
+	@Autowired
+	public void setEventRepository(EventService eventService) {
+		this.eventService = eventService;
+	}
 
 	@Autowired
 	private CompanyService companyService;
@@ -38,7 +46,7 @@ public class EventController {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	@GetMapping("/eventform")
+	@GetMapping("/event/add")
 	public String eventForm(Model model) {
 		model.addAttribute("event", new Event());
 
@@ -54,15 +62,17 @@ public class EventController {
 		return "eventform";	
 	}
 	
-	@PostMapping("/eventform")
-	public String eventSubmit(@ModelAttribute Event event, Model model) {
-		model.addAttribute("event", new Event());
+	@PostMapping("eventlist")
+	public String eventSubmit(Event event) {
+//		model.addAttribute("event", new Event());
+//
+//		model.addAttribute("event", event);
 
-		model.addAttribute("event", event);
+		//eventService.save(event);
 
 		eventService.save(event);
-
-		return "eventresult";
+		
+		return "redirect:/";
 	}
 	
 	@GetMapping("/eventlist")
@@ -71,7 +81,7 @@ public class EventController {
 		return "eventlist";
 	}
 	
-	@GetMapping("/update/{id}")
+	@GetMapping("/event/update/{id}")
 	public String updateEvent(Model model, @PathVariable(value="id") Long id) {
 		model.addAttribute("event", eventService.findById(id));
 		return "eventform";

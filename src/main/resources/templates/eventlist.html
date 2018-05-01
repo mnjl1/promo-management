@@ -38,8 +38,8 @@
 					<td th:utext="${event.getDescription()}"></td>
 					
 					<td>
-						<a th:href="@{/update/{id} (id=${event.getId()})}" class="btn btn-success btn-xs"
-							>Редагувати подію</a>
+						
+							<a th:href="${'/event/update/' +event.getId()}">Редагувати подію</a>
 					</td>
 				</tr>
 			</table>

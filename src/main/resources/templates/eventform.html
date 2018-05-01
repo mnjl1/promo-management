@@ -8,9 +8,9 @@
 <body>
     <h1>Додавання нової промо події</h1>
 
-    <form action="#" th:action="@{/eventform}" th:object="${event}" method="post">
+    <form class="form horizontal" th:action="@{/eventlist}" th:object="${event}" method="post">
         <table>
-
+        
             <select class="form-control" th:field="*{promo}">
 
                 <option th:each="promo: ${promoList}"
@@ -41,8 +41,6 @@
         <p><input type="submit" value="Додати подію"></p>
         <a href="/">У головне меню</a>
     </form>
-
-
-
+    
 </body>
 </html>
