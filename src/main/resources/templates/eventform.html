@@ -11,6 +11,8 @@
     <form class="form horizontal" th:action="@{/eventform}" th:object="${event}" method="post">
         <table>
         
+        <input type="hidden" th:field="*{id}"/>
+        
             <select class="form-control" th:field="*{promo}">
 
                 <option th:each="promo: ${promoList}"

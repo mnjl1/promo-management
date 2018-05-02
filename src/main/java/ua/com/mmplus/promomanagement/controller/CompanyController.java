@@ -42,9 +42,9 @@ public class CompanyController {
     	return "companylist";
     }
     
-    @RequestMapping("/company/edit/{id}")
-    public String updateCompany(@PathVariable(name = "id") Long id) {
-    	
+    @GetMapping("/company/edit/{id}")
+    public String updateCompany(@PathVariable(name = "id") Long id, Model model) {
+    	model.addAttribute("company", companyService.findById(id));
     	return "companyform";
     }
 }
