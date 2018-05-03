@@ -64,12 +64,7 @@ public class EventController {
 	
 	@PostMapping("/eventform")
 	public String eventSubmit(Event event) {
-//		model.addAttribute("event", new Event());
-//
-//		model.addAttribute("event", event);
-
-		//eventService.save(event);
-
+		
 		eventService.save(event);
 		
 		return "eventresult";
@@ -84,6 +79,16 @@ public class EventController {
 	@GetMapping("/event/update/{id}")
 	public String updateEvent(Model model, @PathVariable(value="id") Long id) {
 		model.addAttribute("event", eventService.findById(id));
+		
+		List<Company> companies = companyService.getAll();
+		model.addAttribute("companies", companies);
+		
+		List<Promo> promoList = promoService.getAll();
+		model.addAttribute("promoList", promoList);
+		
+		List<Supermarket> supermarketList = supermarketService.getAll();
+		model.addAttribute("supermarketList", supermarketList);
+		
 		return "eventform";
 	}
 }

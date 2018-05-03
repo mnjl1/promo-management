@@ -12,6 +12,7 @@
         <table>
         
         <input type="hidden" th:field="*{id}"/>
+        <input type="date" th:field = "dateOfEventCreation" th: utext="${event.getDate().toString}"/>
         
             <select class="form-control" th:field="*{promo}">
 

@@ -13,6 +13,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="event")
@@ -23,8 +26,9 @@ public class Event implements Serializable {
 	@Column(name = "event_id")
     private Long id;
 
-	@Column(name = "date")
-    private LocalDate date;
+	@Column(name = "creation_date") // date of event creation
+    private LocalDate dateOfEvenCreation = LocalDate.now();
+	
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "company_id")
@@ -48,10 +52,10 @@ public class Event implements Serializable {
 
 	}
 
-	public Event(Long id, Date date, Company company, Promo promo, String description, Boolean status) {
+	public Event(Long id, LocalDate dateOfEvenCreation , Company company, Promo promo, String description, Boolean status) {
 		super();
 		this.id = id;
-		this.date = LocalDate.now();
+		this.dateOfEvenCreation = dateOfEvenCreation;
 		this.company = company;
 		this.promo = promo;
 		this.description = description;
@@ -64,10 +68,10 @@ public class Event implements Serializable {
 		this.id = id;
 	}
 	public LocalDate getDate() {
-		return date;
+		return dateOfEvenCreation;
 	}
 	public void setDate(LocalDate date) {
-		this.date = date;
+		this.dateOfEvenCreation = date;
 	}
 	public Company getCompany() {
 		return company;

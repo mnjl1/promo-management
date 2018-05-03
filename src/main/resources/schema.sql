@@ -22,7 +22,7 @@ create table supermarket (
 create table event(
 	event_id bigint not null,
   description varchar(255),
-  date timestamp,
+  creation_date date,
   company_id bigint,
   promo_id bigint,
   supermarket_id bigint,
