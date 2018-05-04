@@ -19,6 +19,8 @@ public class Company implements Serializable {
     @Column(name = "email")
     private String companyEmail;
     
+    
+    
     @OneToMany(fetch = FetchType.LAZY, mappedBy="company")
     private Set<Event> eventList = new HashSet<>();
 
