@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import ua.com.mmplus.promomanagement.domain.entity.Company;
 import ua.com.mmplus.promomanagement.domain.entity.Event;
+import ua.com.mmplus.promomanagement.domain.entity.EventDate;
 import ua.com.mmplus.promomanagement.domain.entity.Promo;
 import ua.com.mmplus.promomanagement.domain.entity.Supermarket;
 import ua.com.mmplus.promomanagement.repository.EventRepository;
 import ua.com.mmplus.promomanagement.service.CompanyService;
+import ua.com.mmplus.promomanagement.service.EventDateService;
 import ua.com.mmplus.promomanagement.service.EventService;
 import ua.com.mmplus.promomanagement.service.PromoService;
 import ua.com.mmplus.promomanagement.service.SupermarketService;
@@ -28,6 +30,7 @@ public class EventController {
 	@Autowired
 	EventRepository eventRepository;
 	
+	@Autowired
 	private EventService eventService;
 	
 	@Autowired
@@ -43,12 +46,16 @@ public class EventController {
 
 	@Autowired
 	private SupermarketService supermarketService;
+	
+	private EventDateService eventDateService;
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@GetMapping("/eventform")
 	public String eventForm(Model model) {
 		model.addAttribute("event", new Event());
+		
+		model.addAttribute("eventDate", new EventDate());
 
 		List<Company> companies = companyService.getAll();
 		model.addAttribute("companies", companies);

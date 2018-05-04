@@ -35,10 +35,4 @@ public class EventServiceImpl implements EventService {
 		return eventRepository.getOne(id);
 	}
 
-	@Override
-	public void update(Event event) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

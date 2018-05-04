@@ -2,6 +2,7 @@ drop table if exists event;
 DROP TABLE IF EXISTS company;
 DROP TABLE IF EXISTS promo;
 drop table if exists supermarket;
+drop table if exists event_date;
 
 CREATE TABLE company (
   company_id BIGINT NOT NULL,
@@ -27,4 +28,10 @@ create table event(
   promo_id bigint,
   supermarket_id bigint,
   status boolean
+);
+
+create table event_date(
+eventDate_id bigint not null,
+eventDate date,
+event_id bigint
 )

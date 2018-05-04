@@ -14,8 +14,4 @@ public interface EventService {
 	
 	Event findById(Long id);
 	
-	void update(Event event);
-	
-	
-
 }

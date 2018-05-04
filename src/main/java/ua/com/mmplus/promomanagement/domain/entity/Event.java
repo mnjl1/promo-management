@@ -26,10 +26,13 @@ public class Event implements Serializable {
 	@Column(name = "event_id")
     private Long id;
 
-	@Column(name = "creation_date") // date of event creation
+	@Column(name = "creation_date") // date of event object creation
     private LocalDate dateOfEvenCreation = LocalDate.now();
 	
-
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="eventDate_id")
+	private EventDate eventDate;
+	
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "company_id")
     private Company company;
@@ -49,7 +52,6 @@ public class Event implements Serializable {
     private boolean status;
 
 	public Event() {
-
 	}
 
 	public Event(Long id, LocalDate dateOfEvenCreation , Company company, Promo promo, String description, Boolean status) {
@@ -105,4 +107,82 @@ public class Event implements Serializable {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
+	
+	
+
+	public LocalDate getDateOfEvenCreation() {
+		return dateOfEvenCreation;
+	}
+
+	public void setDateOfEvenCreation(LocalDate dateOfEvenCreation) {
+		this.dateOfEvenCreation = dateOfEvenCreation;
+	}
+
+	public EventDate getEventDate() {
+		return eventDate;
+	}
+
+	public void setEventDate(EventDate eventDate) {
+		this.eventDate = eventDate;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((company == null) ? 0 : company.hashCode());
+		result = prime * result + ((dateOfEvenCreation == null) ? 0 : dateOfEvenCreation.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((promo == null) ? 0 : promo.hashCode());
+		result = prime * result + (status ? 1231 : 1237);
+		result = prime * result + ((supermarket == null) ? 0 : supermarket.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Event other = (Event) obj;
+		if (company == null) {
+			if (other.company != null)
+				return false;
+		} else if (!company.equals(other.company))
+			return false;
+		if (dateOfEvenCreation == null) {
+			if (other.dateOfEvenCreation != null)
+				return false;
+		} else if (!dateOfEvenCreation.equals(other.dateOfEvenCreation))
+			return false;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (promo == null) {
+			if (other.promo != null)
+				return false;
+		} else if (!promo.equals(other.promo))
+			return false;
+		if (status != other.status)
+			return false;
+		if (supermarket == null) {
+			if (other.supermarket != null)
+				return false;
+		} else if (!supermarket.equals(other.supermarket))
+			return false;
+		return true;
+	}
+	
+	
 }
