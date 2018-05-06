@@ -1,5 +1,6 @@
 package ua.com.mmplus.promomanagement.domain.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,33 +11,41 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name="event_date")
-public class EventDate {
+public class EventDate implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="eventDate_id")
+	@Column(name="event_date_id")
 	private Long id;
 	
-	@Column(name="eventDate")
+	@DateTimeFormat(pattern="dd-MM-yyyy")
+	@Column(name="promo_event_date")
 	private Date eventDate;
 	
-	@OneToMany(fetch=FetchType.LAZY, mappedBy = "event_date")
-	private Set<Event> eventList = new HashSet<>();
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="event_id")
+	private Event event;
 	
 	public EventDate() {
 		
 	}
 	
-	public EventDate(Long id, Date eventDate, Set<Event> eventList) {
+	public EventDate(Long id, Date eventDate, Event event) {
 		super();
 		this.id = id;
 		this.eventDate = eventDate;
-		this.eventList = eventList;
+		this.event = event;
 	}
+
+
 
 	public Long getId() {
 		return id;
@@ -54,12 +63,14 @@ public class EventDate {
 		this.eventDate = eventDate;
 	}
 
-	public Set<Event> getEventList() {
-		return eventList;
+	
+
+	public Event getEvent() {
+		return event;
 	}
 
-	public void setEventList(Set<Event> eventList) {
-		this.eventList = eventList;
+	public void setEvent(Event event) {
+		this.event = event;
 	}
 
 	@Override
@@ -67,7 +78,6 @@ public class EventDate {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((eventDate == null) ? 0 : eventDate.hashCode());
-		result = prime * result + ((eventList == null) ? 0 : eventList.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
@@ -85,11 +95,6 @@ public class EventDate {
 			if (other.eventDate != null)
 				return false;
 		} else if (!eventDate.equals(other.eventDate))
-			return false;
-		if (eventList == null) {
-			if (other.eventList != null)
-				return false;
-		} else if (!eventList.equals(other.eventList))
 			return false;
 		if (id == null) {
 			if (other.id != null)

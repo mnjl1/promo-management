@@ -55,7 +55,7 @@ public class EventController {
 	public String eventForm(Model model) {
 		model.addAttribute("event", new Event());
 		
-		model.addAttribute("eventDate", new EventDate());
+		model.addAttribute("promo_event_date", new EventDate());
 
 		List<Company> companies = companyService.getAll();
 		model.addAttribute("companies", companies);

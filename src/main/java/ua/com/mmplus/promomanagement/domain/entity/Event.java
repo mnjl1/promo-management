@@ -3,6 +3,8 @@ package ua.com.mmplus.promomanagement.domain.entity;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -29,9 +32,8 @@ public class Event implements Serializable {
 	@Column(name = "creation_date") // date of event object creation
     private LocalDate dateOfEvenCreation = LocalDate.now();
 	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="eventDate_id")
-	private EventDate eventDate;
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="event")
+	private Set<EventDate> eventDateList = new HashSet<>();
 	
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "company_id")
@@ -46,7 +48,7 @@ public class Event implements Serializable {
     private Supermarket supermarket;
 
     @Column(name = "description")
-    private String description;
+    private String eventDescription;
 
     @Column(name="status")
     private boolean status;
@@ -54,15 +56,23 @@ public class Event implements Serializable {
 	public Event() {
 	}
 
-	public Event(Long id, LocalDate dateOfEvenCreation , Company company, Promo promo, String description, Boolean status) {
+	public Event(Long id, LocalDate dateOfEvenCreation, Set<EventDate> eventDateList, Company company, Promo promo,
+			Supermarket supermarket, String description, boolean status) {
 		super();
 		this.id = id;
 		this.dateOfEvenCreation = dateOfEvenCreation;
+		this.eventDateList = eventDateList;
 		this.company = company;
 		this.promo = promo;
-		this.description = description;
+		this.supermarket = supermarket;
+		this.eventDescription = description;
 		this.status = status;
 	}
+
+
+
+
+
 	public Long getId() {
 		return id;
 	}
@@ -94,10 +104,10 @@ public class Event implements Serializable {
 		this.supermarket = supermarket;
 	}
 	public String getDescription() {
-		return description;
+		return eventDescription;
 	}
 	public void setDescription(String description) {
-		this.description = description;
+		this.eventDescription = description;
 	}
 
 	public boolean isStatus() {
@@ -110,6 +120,14 @@ public class Event implements Serializable {
 	
 	
 
+	public Set<EventDate> getEventDateList() {
+		return eventDateList;
+	}
+
+	public void setEventDateList(Set<EventDate> eventDateList) {
+		this.eventDateList = eventDateList;
+	}
+
 	public LocalDate getDateOfEvenCreation() {
 		return dateOfEvenCreation;
 	}
@@ -118,21 +136,13 @@ public class Event implements Serializable {
 		this.dateOfEvenCreation = dateOfEvenCreation;
 	}
 
-	public EventDate getEventDate() {
-		return eventDate;
-	}
-
-	public void setEventDate(EventDate eventDate) {
-		this.eventDate = eventDate;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((company == null) ? 0 : company.hashCode());
 		result = prime * result + ((dateOfEvenCreation == null) ? 0 : dateOfEvenCreation.hashCode());
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((eventDescription == null) ? 0 : eventDescription.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((promo == null) ? 0 : promo.hashCode());
 		result = prime * result + (status ? 1231 : 1237);
@@ -159,10 +169,10 @@ public class Event implements Serializable {
 				return false;
 		} else if (!dateOfEvenCreation.equals(other.dateOfEvenCreation))
 			return false;
-		if (description == null) {
-			if (other.description != null)
+		if (eventDescription == null) {
+			if (other.eventDescription != null)
 				return false;
-		} else if (!description.equals(other.description))
+		} else if (!eventDescription.equals(other.eventDescription))
 			return false;
 		if (id == null) {
 			if (other.id != null)
