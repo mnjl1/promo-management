@@ -1,8 +1,3 @@
-drop table if exists event_date;
-drop table if exists event cascade;
-DROP TABLE IF EXISTS company;
-DROP TABLE IF EXISTS promo;
-drop table if exists supermarket;
 
 CREATE TABLE company (
   company_id BIGINT NOT NULL,
