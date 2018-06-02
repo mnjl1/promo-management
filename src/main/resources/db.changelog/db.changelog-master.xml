@@ -1,0 +1,26 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet author="Manzhula" id="1">
+        <createTable tableName="company">
+            <column name="company_id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false"/>
+            </column>
+            <column name="company_name" type="VARCHAR(255)"/>
+            <column name="company_email" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="Manzhula">
+        <insert tableName="company">
+            <column name="company_name" value="Sandora"/>
+        </insert>
+        <insert tableName="company">
+            <column name="company_name" value="Ferrero"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
