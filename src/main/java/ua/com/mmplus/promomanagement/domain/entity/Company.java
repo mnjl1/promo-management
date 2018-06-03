@@ -1,13 +1,12 @@
 package ua.com.mmplus.promomanagement.domain.entity;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "company")
-public class Company implements Serializable {
+public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "company_id")
