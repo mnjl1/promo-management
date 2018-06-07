@@ -89,6 +89,12 @@ public class Promo implements Serializable {
 	}
 
 
-	
-    
+	@Override
+	public String toString() {
+		return "Promo{" +
+				"id=" + id +
+				", promoName='" + promoName + '\'' +
+				", eventList=" + eventList +
+				'}';
+	}
 }
