@@ -1,18 +1,17 @@
 package ua.com.mmplus.promomanagement.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.com.mmplus.promomanagement.domain.entity.Promo;
 import ua.com.mmplus.promomanagement.repository.PromoRepository;
+
+import java.util.List;
 
 @Service
 public class PromoServiceImpl implements PromoService {
 	
 	@Autowired
 	PromoRepository promoRepository;
-	
 
 	@Override
 	public void save(Promo promo) {
