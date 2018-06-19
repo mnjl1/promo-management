@@ -2,7 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Додавання нової промо події</title>
-    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="../css/main.css"/>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -15,6 +20,11 @@ $(function() {
 
 </head>
 <body>
+
+    <header class="header">
+        <div th:replace="fragments/header::header"></div>
+    </header>
+
     <h1>Додавання нової промо події</h1>
 
     <form class="form horizontal" th:action="@{/eventform}" th:object="${event}" method="post">
@@ -22,7 +32,7 @@ $(function() {
         
         <input type="hidden" th:field="*{id}"/>
         
-        <p>Дата події <input type="datetime"  id="datepicker"/></p>
+        <p>Дата події <input type="date"  id="datepicker"/></p>
         
         
             <select class="form-control" th:field="*{promo}">
@@ -40,7 +50,7 @@ $(function() {
                         th:utext="${companyList.getCompanyName().toString()}"></option>
             </select>
 
-            <select class="form-control" th:field="*{supermarket}">
+            <select name="supermarket" class="form-control" th:field="*{supermarket}">
                 <p>Вибір постачальника</p>
                 <option th:each="supermarket : ${supermarketList}"
                         th:value="${supermarket.getId()}"
@@ -52,8 +62,7 @@ $(function() {
             <p>Опис події: <textarea rows="" cols=""  th:field="*{description}"></textarea>  </p>
 
         </table>
-        <p><input type="submit" value="Додати подію"></p>
-        <a href="/">У головне меню</a>
+        <p><input type="submit" value="Дотати подію"></p>
     </form>
     
 </body>

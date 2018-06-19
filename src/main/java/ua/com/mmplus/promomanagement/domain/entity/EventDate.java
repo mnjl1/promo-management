@@ -1,9 +1,6 @@
 package ua.com.mmplus.promomanagement.domain.entity;
 
-import java.io.Serializable;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,22 +10,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.springframework.format.annotation.DateTimeFormat;
+import java.io.Serializable;
+import java.time.LocalDate;
 
 @Entity
 @Table(name="event_date")
 public class EventDate implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="event_date_id")
+	@Column(name="event_date_id", nullable = false, updatable = false)
 	private Long id;
 	
 	@DateTimeFormat(pattern="dd-MM-yyyy")
 	@Column(name="promo_event_date")
-	private Date eventDate;
+	private LocalDate eventDate;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="event_id")
@@ -38,7 +34,7 @@ public class EventDate implements Serializable {
 		
 	}
 	
-	public EventDate(Long id, Date eventDate, Event event) {
+	public EventDate(Long id, LocalDate eventDate, Event event) {
 		super();
 		this.id = id;
 		this.eventDate = eventDate;
@@ -55,11 +51,11 @@ public class EventDate implements Serializable {
 		this.id = id;
 	}
 
-	public Date getEventDate() {
+	public LocalDate getEventDate() {
 		return eventDate;
 	}
 
-	public void setEventDate(Date eventDate) {
+	public void setEventDate(LocalDate eventDate) {
 		this.eventDate = eventDate;
 	}
 

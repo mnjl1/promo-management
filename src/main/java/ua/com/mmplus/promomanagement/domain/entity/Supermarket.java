@@ -10,7 +10,7 @@ import java.util.Set;
 public class Supermarket implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "supermarket_id")
+	@Column(name = "supermarket_id", nullable = false, updatable = false)
     private Long id;
 
     @Column(name = "supermarket_name")
@@ -54,7 +54,6 @@ public class Supermarket implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((eventList == null) ? 0 : eventList.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((supermarketName == null) ? 0 : supermarketName.hashCode());
 		return result;
@@ -69,11 +68,6 @@ public class Supermarket implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Supermarket other = (Supermarket) obj;
-		if (eventList == null) {
-			if (other.eventList != null)
-				return false;
-		} else if (!eventList.equals(other.eventList))
-			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;

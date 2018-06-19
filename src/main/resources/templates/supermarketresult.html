@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	<!-- Custom styles for this template -->
+	<link rel="stylesheet" type="text/css" href="../css/main.css"/>
 <title>Success</title>
 	<link rel="stylesheet" type="text/css" media="all"
           href="../../css/gtvg.css" th:href="@{/css/gtvg.css}" />
 </head>
+
+<header>
+	<div th:replace="/fragments/header :: header"/>
+</header>
+
 <body>
 	<a href="/supermarketform">Add new Supermarket</a>
-	<a href="/">У головне меню</a>
+
 </body>
 </html>
