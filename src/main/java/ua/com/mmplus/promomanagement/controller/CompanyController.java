@@ -17,7 +17,7 @@ public class CompanyController {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @RequestMapping(value = "/companyform", method = RequestMethod.GET)
+    @GetMapping(value = "/companyform")
     public String companyForm(Model model){
         model.addAttribute("company", new Company());
         return "companyform";

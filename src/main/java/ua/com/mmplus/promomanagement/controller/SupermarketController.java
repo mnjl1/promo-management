@@ -6,10 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import ua.com.mmplus.promomanagement.domain.entity.Supermarket;
 import ua.com.mmplus.promomanagement.service.SupermarketService;
 
@@ -28,9 +26,7 @@ public class SupermarketController {
 	}
 	
 	@PostMapping("/supermarketform")
-	public String supermarketSubmit(@ModelAttribute Supermarket supermarket, Model model) {
-		model.addAttribute("supermarket", new Supermarket());
-		
+	public String supermarketSubmit(Supermarket supermarket) {
 		String info = String.format("Supermarket submission id = %d, supermarket = %s",
 				supermarket.getId(), supermarket.getSupermarketName());
 		logger.info(info);
@@ -46,5 +42,4 @@ public class SupermarketController {
 		model.addAttribute("supermarket", supermarket);
 		return "supermarketinfo";
 	}
-
 }

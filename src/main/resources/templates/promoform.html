@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th:="http://thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th:="http://thymeleaf.org"
+	  xmlns:th="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  xsi:schemaLocation="http://thymeleaf.org ">
 
 <head>
 	<meta charset="utf-8">
@@ -9,7 +11,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 	<!-- Custom styles for this template -->
 	<link rel="stylesheet" type="text/css" href="../css/main.css"/>
-<title>Promo submission</title>
+	<title>Promo submission</title>
 </head>
 
 <header>
@@ -17,12 +19,12 @@
 </header>
 
 <body>
-	<h1>Promo form</h1>
-	
-	<form action="#" th:action="@{/promoform}" th:object="${promo}" method="post">
-	<p>New promo type: <input type="text" th:field="*{promoName}" /></p>
+<h1>Promo form</h1>
+
+<form th:action="@{/promoform}" th:object="${promo}" method="post">
+	<p>New promo type: <input type="text" th:field="*{promoName}"></p>
 	<p><input type="submit" value="SUBMIT"/><input type="reset" value="RESET"></p>
-	</form>
+</form>
 <a href="/">У головне меню</a>
 </body>
 </html>

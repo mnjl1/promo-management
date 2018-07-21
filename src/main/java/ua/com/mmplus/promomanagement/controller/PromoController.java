@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import ua.com.mmplus.promomanagement.domain.entity.Promo;
 import ua.com.mmplus.promomanagement.service.PromoService;
@@ -23,11 +22,10 @@ public class PromoController {
 		model.addAttribute("promo", new Promo());
 		
 		return "promoform";
-		
 	}
 	
 	@PostMapping("/promoform")
-	public String promoSubmit(@ModelAttribute Promo promo, Model model) {
+	public String promoSubmit(Promo promo) {
 		
 		String info = String.format("Promo submission: id = %d,  promo = %s", promo.getId(), promo.getPromoName());
 		logger.info(info);
@@ -36,7 +34,4 @@ public class PromoController {
 		
 		return "promoresult";
 	}
-	
-	
-
 }
