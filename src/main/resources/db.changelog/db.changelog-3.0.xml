@@ -7,7 +7,7 @@
     <changeSet id="3" author="Manzhula">
         <createTable tableName="promo">
             <column name="promo_id" type="BIGINT" autoIncrement="true">
-                <constraints nullable="false"/>
+                <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="promo_name" type="VARCHAR(255)"/>
             <column name="event_id" type="BIGINT"/>

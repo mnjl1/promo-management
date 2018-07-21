@@ -6,12 +6,19 @@
 
     <changeSet id="2" author="Manzhula">
         <insert tableName="company">
+            <column name="company_id" valueNumeric="1"/>
             <column name="company_name" value="Sandora"/>
             <column name="company_email" value="sandora@pepsico.ua"/>
         </insert>
         <insert tableName="company">
+            <column name="company_id" valueNumeric="2"/>
             <column name="company_name" value="Ferrero"/>
             <column name="company_email" value="ferrero@ukr.net"/>
+        </insert>
+        <insert tableName="company">
+            <column name="company_id" valueNumeric="3"/>
+            <column name="company_name" value="AVK"/>
+            <column name="company_email" value="a@a"/>
         </insert>
     </changeSet>
 

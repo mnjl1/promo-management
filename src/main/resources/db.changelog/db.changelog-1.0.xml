@@ -7,7 +7,7 @@
     <changeSet author="Manzhula" id="1">
         <createTable tableName="company">
             <column name="company_id" type="BIGINT" autoIncrement="true">
-                <constraints nullable="false"/>
+                <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="company_name" type="VARCHAR(255)"/>
             <column name="company_email" type="VARCHAR(255)"/>
